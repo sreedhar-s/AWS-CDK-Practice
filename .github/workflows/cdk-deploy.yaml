@@ -47,8 +47,8 @@ jobs:
           role-session-name: gha-deploy
           audience: sts.amazonaws.com
 
-      - name: CDK diff
-        run: uv run cdk diff 
+      - name: CDK synth
+        run: uv run cdk synth ${{ inputs.stack}}
       
       - name: CDK deploy
         run: uv run cdk deploy ${{ inputs.stack}} --require-approval never
