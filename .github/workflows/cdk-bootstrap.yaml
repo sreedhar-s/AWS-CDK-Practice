@@ -70,4 +70,4 @@ jobs:
           audience: sts.amazonaws.com
 
       - name: CDK bootstrap
-        run: uv run cdk bootstrap aws://${{ inputs.account_id }}/${{ env.AWS_REGION }} --trust ${{ inputs.account_id }}
+        run: uv run cdk bootstrap aws://${{ inputs.account_id }}/${{ env.AWS_REGION }}
