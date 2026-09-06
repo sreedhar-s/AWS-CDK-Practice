@@ -37,12 +37,19 @@ jobs:
       - name: Install AWS CDK CLI
         run: npm install -g aws-cdk
 
+      - name: Check GitHub environment
+        run: |
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Ref: $GITHUB_REF"
+          echo "Event: $GITHUB_EVENT_NAME"
+          
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::${{ inputs.account_id }}:role/gha-role
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: gha-bootstrap
+          audience: sts.amazonaws.com
 
       - name: CDK bootstrap
         run: uv run cdk bootstrap aws://${{ inputs.account_id }}/${{ env.AWS_REGION }}

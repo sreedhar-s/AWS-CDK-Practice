@@ -42,6 +42,7 @@ jobs:
           role-to-assume: arn:aws:iam::791614298327:role/gha-role
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: gha-deploy
+          audience: sts.amazonaws.com
 
       - name: CDK diff
         run: uv run cdk diff 
