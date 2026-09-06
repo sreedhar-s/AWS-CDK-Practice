@@ -1,0 +1,52 @@
+name: Deploy AWS CDK
+
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        description: "Which stack to deploy"
+        required: true
+
+permissions:
+  id-token: write 
+  contents: read 
+
+env:
+  AWS_REGION: ap-southeast-1
+
+jobs:
+  cdk-plan:
+    name: cdk plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Install AWS CDK CLI
+        run: npm install -g aws-cdk
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::791614298327:role/gha-role
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-deploy
+
+      - name: CDK diff
+        run: uv run cdk diff 
+      
+      - name: CDK deploy
+        run: uv run cdk deploy ${{ inputs.stack}} --require-approval never
+
+ 
