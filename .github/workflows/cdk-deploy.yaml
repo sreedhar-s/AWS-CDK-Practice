@@ -6,6 +6,9 @@ on:
       stack:
         description: "Which stack to deploy"
         required: true
+      account_id:
+        description: "AWS account ID to deploy"
+        required: true
 
 permissions:
   id-token: write 
@@ -39,7 +42,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
-          role-to-assume: arn:aws:iam::791614298327:role/gha-role
+          role-to-assume: arn:aws:iam::${{inputs.account_id}}:role/gha-role
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: gha-deploy
           audience: sts.amazonaws.com
