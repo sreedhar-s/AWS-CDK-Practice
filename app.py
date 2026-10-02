@@ -2,6 +2,7 @@
 import aws_cdk as cdk
 from stacks.network_vpc_stack import NetworkStack
 from stacks.workload_vpc_stack import WorkloadNetworkStack
+from stacks.management_stack import ManagementStack
 from constructs import Construct
 
 app = cdk.App()
@@ -21,6 +22,11 @@ WorkloadNetworkStack(
         account="032401369172", 
         region="ap-southeast-1"
     )
+)
+
+ManagementStack(
+    app,
+    "ManagementStack"
 )
 
 app.synth()
