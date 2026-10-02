@@ -10,6 +10,6 @@ class ManagementStack(Stack):
         security = OrganizationalUnitConstruct(
             self,
             "test OU",
-            parent_id="o-kpzwrqcq26",
+            parent_id="r-1ofw",
             ou_name="test OU",
         )

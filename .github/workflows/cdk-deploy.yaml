@@ -8,7 +8,7 @@ on:
         required: true
       account_id:
         description: "AWS account ID to deploy"
-        required: true
+        # required: true
 
 permissions:
   id-token: write 
