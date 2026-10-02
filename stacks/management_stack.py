@@ -15,10 +15,10 @@ class ManagementStack(Stack):
             ou_name="test OU",
         )
         
-        test-acc = AccountConstruct(
+        test_acc = AccountConstruct(
             self,
             "test-acc",
             account_name="test-acc",
-            parent_ids=["ou-1ofw-6mx6lk9l"],
+            parent_ids=["ou-1ofw-6mx6lk9l"]
         )
 
