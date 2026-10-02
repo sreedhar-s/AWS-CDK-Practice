@@ -19,7 +19,7 @@ class ManagementStack(Stack):
             self,
             "test-acc",
             account_name="test-acc",
-            email="test-acc@gmail.com",
+            email="test-acc@mindsprint.com",
             ou_id="ou-1ofw-6mx6lk9l"
         )
 
