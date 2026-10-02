@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
+from constructs import Construct
 from stacks.network_vpc_stack import NetworkStack
 from stacks.workload_vpc_stack import WorkloadNetworkStack
 from stacks.management_stack import ManagementStack
-from constructs import Construct
 
 app = cdk.App()
 NetworkStack(
