@@ -26,9 +26,9 @@ WorkloadNetworkStack(
 
 ManagementStack(
     app,
-    "ManagementStack"
+    "ManagementStack",
     env=cdk.Environment( 
-        account="641833687551",
+        account="641833687551"
     )
 )
 
