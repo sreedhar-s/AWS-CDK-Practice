@@ -19,6 +19,7 @@ class ManagementStack(Stack):
             self,
             "test-acc",
             account_name="test-acc",
-            parent_ids=["ou-1ofw-6mx6lk9l"]
+            email="test-acc@gmail.com",
+            ou_id=["ou-1ofw-6mx6lk9l"]
         )
 
