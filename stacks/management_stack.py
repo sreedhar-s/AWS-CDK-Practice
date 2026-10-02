@@ -2,6 +2,7 @@ from aws_cdk import Stack
 from constructs import Construct
 
 from aws_constructs.org_unit import OrganizationalUnitConstruct
+from aws_constructs.account import AccountConstruct
 
 class ManagementStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -13,3 +14,11 @@ class ManagementStack(Stack):
             parent_id="r-1ofw",
             ou_name="test OU",
         )
+        
+        test-acc = AccountConstruct(
+            self,
+            "test-acc",
+            account_name="test-acc",
+            parent_ids=["ou-1ofw-6mx6lk9l"],
+        )
+

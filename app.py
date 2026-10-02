@@ -27,6 +27,9 @@ WorkloadNetworkStack(
 ManagementStack(
     app,
     "ManagementStack"
+    env=cdk.Environment( 
+        account="641833687551",
+    )
 )
 
 app.synth()
