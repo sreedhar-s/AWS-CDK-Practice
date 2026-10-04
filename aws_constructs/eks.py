@@ -59,12 +59,12 @@ class EKSClusterConstruct(Stack):
             ),
 
             logging=eks.CfnCluster.LoggingProperty(
-                cluster_logging=eks.CfnCluster.LoggingTypeConfigProperty(
+                cluster_logging=eks.CfnCluster.ClusterLoggingProperty(
                     enabled_types=[
-                        eks.CfnCluster.LogTypeConfigProperty(
+                        eks.CfnCluster.LoggingTypeConfigProperty(
                             type="api"
                         ),
-                        eks.CfnCluster.LogTypeConfigProperty(
+                        eks.CfnCluster.LoggingTypeConfigProperty(
                             type="authenticator"
                         ),
                     ]
