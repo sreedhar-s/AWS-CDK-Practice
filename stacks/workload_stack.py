@@ -222,7 +222,7 @@ class WorkloadStack(Stack):
         VpcEndpointIngressFromNodes = SecurityGroupIngressConstruct(
             self,
             "VpcEndpointIngressFromNodes",
-            group_id=self.vpc_endpoint_sg.security_group.ref,
+            group_id=vpcendpoint_sg.security_group.ref,
             ingress_rules=[
                 {
                     "ip_protocol": "tcp",
@@ -240,7 +240,7 @@ class WorkloadStack(Stack):
         VpcEndpointIngressFromCluster = SecurityGroupIngressConstruct(
             self,
             "VpcEndpointIngressFromCluster",
-            group_id=self.vpc_endpoint_sg.security_group.ref,
+            group_id=vpcendpoint_sg.security_group.ref,
             ingress_rules=[
                 {
                     "ip_protocol": "tcp",
