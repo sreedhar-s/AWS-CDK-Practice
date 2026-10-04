@@ -2,7 +2,7 @@
 import aws_cdk as cdk
 from constructs import Construct
 from stacks.network_vpc_stack import NetworkStack
-from stacks.workload_vpc_stack import WorkloadNetworkStack
+from stacks.workload_stack import WorkloadStack
 from stacks.management_stack import ManagementStack
 
 app = cdk.App()
@@ -15,9 +15,9 @@ NetworkStack(
     )
 )
 
-WorkloadNetworkStack(
+WorkloadStack(
     app,
-    "WorkloadNetworkStack",
+    "WorkloadStack",
     env=cdk.Environment( 
         account="032401369172", 
         region="ap-southeast-1"

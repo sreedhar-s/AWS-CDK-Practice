@@ -6,7 +6,7 @@ from aws_constructs.subnet import SubnetConstruct
 from aws_constructs.tgw_attachment import TransitGatewayAttachmentConstruct
 from aws_constructs.s3 import S3BucketConstruct
 
-class WorkloadNetworkStack(Stack):
+class WorkloadStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
