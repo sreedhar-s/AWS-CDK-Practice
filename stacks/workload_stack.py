@@ -57,10 +57,10 @@ class WorkloadStack(Stack):
         
         demo_s3 = S3BucketConstruct(
             self,
-            "demo_s3",
-            bucket_name="demo-s3-bucket1",
+            "ue1-demo-cloudtrail-pr",
+            bucket_name="ue1-demo-cloudtrail-pr",
             tags = {
-                "Name": "demo-s3-bucket1"
+                "Name": "ue1-demo-cloudtrail-pr"
             }
         )
         
