@@ -265,12 +265,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "ecr-api-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "ecr-api-endpoint"
+            }
         )
         
         # =========================================================
@@ -287,12 +284,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "ecr-dkr-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "ecr-dkr-endpoint"
+            }
         )
         
         # =========================================================
@@ -307,14 +301,10 @@ class WorkloadStack(Stack):
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.us-east-1.sts",
             vpc_endpoint_type="Interface",
-            
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "sts-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "sts-endpoint"
+            }
         )
         
         # =========================================================
@@ -331,12 +321,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "eks-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "eks-endpoint"
+            }
         )
         
         # =========================================================
@@ -353,12 +340,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "eks-auth-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "eks-auth-endpoint"
+            }
         )
         
         # =========================================================
@@ -375,12 +359,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Gateway",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "s3-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "s3-endpoint"
+            }
         )
         
         # =========================================================
@@ -397,12 +378,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Gateway",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "secret-manager-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "secret-manager-endpoint"
+            }
         )
         
         # =========================================================
@@ -419,12 +397,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Gateway",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "ec2-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "ec2-endpoint"
+            }
         )
         
         # =========================================================
@@ -441,12 +416,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Gateway",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "ssm-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "ssm-endpoint"
+            }
         )
                 
         # =========================================================
@@ -463,12 +435,9 @@ class WorkloadStack(Stack):
             vpc_endpoint_type="Gateway",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
-            tags=[
-                {
-                    "key": "Name",
-                    "value": "ssm-messages-endpoint"
-                }
-            ]
+            tags = {
+                "Name": "ssm-messages-endpoint"
+            }
         )
         
         # =========================================================
