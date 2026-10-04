@@ -261,7 +261,7 @@ class WorkloadStack(Stack):
             vpc_id=demo_vpc.vpc.ref,
             private_subnet_1=demo_pvt_snt_1a.subnet.ref,
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
-            service_name=f"com.amazonaws.us-east-1.ecr.api",
+            service_name=f"com.amazonaws.ap-southeast-1.ecr.api",
             vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
@@ -375,7 +375,7 @@ class WorkloadStack(Stack):
             private_subnet_1=demo_pvt_snt_1a.subnet.ref,
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.ap-southeast-1.secretsmanager",
-            vpc_endpoint_type="Gateway",
+            vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
@@ -394,7 +394,7 @@ class WorkloadStack(Stack):
             private_subnet_1=demo_pvt_snt_1a.subnet.ref,
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.ap-southeast-1.ec2",
-            vpc_endpoint_type="Gateway",
+            vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
@@ -413,7 +413,7 @@ class WorkloadStack(Stack):
             private_subnet_1=demo_pvt_snt_1a.subnet.ref,
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.ap-southeast-1.ssm",
-            vpc_endpoint_type="Gateway",
+            vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
@@ -432,7 +432,7 @@ class WorkloadStack(Stack):
             private_subnet_1=demo_pvt_snt_1a.subnet.ref,
             private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.ap-southeast-1.ssmmessages",
-            vpc_endpoint_type="Gateway",
+            vpc_endpoint_type="Interface",
             
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
