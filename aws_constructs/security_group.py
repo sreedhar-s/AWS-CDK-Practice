@@ -14,7 +14,7 @@ class SecurityGroupConstruct(Construct):
         construct_id: str,
         vpc_id: str,
         description: str,
-        ingress_rules: Optional[List[Dict]] = None,
+        group_name: str,
         tags: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> None:
@@ -35,24 +35,8 @@ class SecurityGroupConstruct(Construct):
         self.security_group = ec2.CfnSecurityGroup(
             self,
             "SecurityGroup",
+            group_name=group_name,
             group_description=description,
             vpc_id=vpc_id,
             tags=sg_tags
         )
-
-        # -----------------------------------------
-        # Ingress Rules
-        # -----------------------------------------
-
-        for index, rule in enumerate(ingress_rules or []):
-
-            ec2.CfnSecurityGroupIngress(
-                self,
-                f"IngressRule{index}",
-                group_id=self.security_group.attr_group_id,
-                ip_protocol=rule.get("protocol", "tcp"),
-                from_port=rule.get("from_port"),
-                to_port=rule.get("to_port"),
-                cidr_ip=rule.get("cidr_ip"),
-                description=rule.get("description"),
-            )

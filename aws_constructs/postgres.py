@@ -11,8 +11,7 @@ class PostgresRDSConstruct(Construct):
     def __init__(
         self,
         scope: Construct,
-        construct_id: str,
-
+        construct_id: str, *,
         # Database
         db_name: str,
         master_username: str,
@@ -23,6 +22,7 @@ class PostgresRDSConstruct(Construct):
         # Networking
         subnet_ids: list[str],
         security_group_id: str,
+        db_subnet_group_name: str,
 
         # IAM
         monitoring_role_arn: str,
@@ -46,7 +46,7 @@ class PostgresRDSConstruct(Construct):
         self.subnet_group = rds.CfnDBSubnetGroup(
             self,
             "PostgresSubnetGroup",
-
+            db_subnet_group_name = db_subnet_group_name,
             db_subnet_group_description=(
                 "Subnet group for PostgreSQL RDS"
             ),
