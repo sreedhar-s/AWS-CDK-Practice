@@ -353,11 +353,8 @@ class WorkloadStack(Stack):
             self,
             "S3Endpoint",
             vpc_id=demo_vpc.vpc.ref,
-            private_subnet_1=demo_pvt_snt_1a.subnet.ref,
-            private_subnet_2=demo_pvt_snt_1b.subnet.ref,
             service_name=f"com.amazonaws.ap-southeast-1.s3",
             vpc_endpoint_type="Gateway",
-            
             endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
                 "Name": "s3-endpoint"

@@ -8,10 +8,11 @@ class VpcEndpointConstruct(Construct):
         scope: Construct,
         construct_id: str,
         *,
-        vpc_id: str,
-        private_subnet_1: str,
-        private_subnet_2: str,
-        endpoint_security_group_id: str,
+        vpc_id: Optional[str] = None,
+        private_subnet_1: Optional[str] = None,
+        private_subnet_2: Optional[str] = None,
+        endpoint_security_group_id: Optional[str] = None,
+        route_table_ids: Optional[str] = None,
         service_name: str,
         vpc_endpoint_type: str,
         tags: Optional[Dict[str, str]] = None,
@@ -36,6 +37,7 @@ class VpcEndpointConstruct(Construct):
             private_dns_enabled=True,
             subnet_ids=subnet_ids,
             security_group_ids=security_group_ids,
+            route_table_ids=route_table_ids,
             tags=[
                 CfnTag(
                     key=key,
