@@ -75,6 +75,7 @@ class WorkloadStack(Stack):
             self,
             "VPCEnpointSecurityGroup",
             vpc_id=demo_vpc.vpc.ref,
+            group_name = "vpc-endpoint-sg",
             description=(
                 "Security group for VPC Enpoints"
             ),
