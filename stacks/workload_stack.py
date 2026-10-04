@@ -191,10 +191,14 @@ class WorkloadStack(Stack):
             self,
             "NodeIngressFromCluster",
             group_id=node_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=1025,
-            to_port=65535,
-            source_security_group_id=cluster_sg.security_group.ref,
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "source_security_group_id": cluster_sg.security_group.ref
+                }
+            ]
         )
 
         NodeIngress443FromCluster = SecurityGroupIngressConstruct(
