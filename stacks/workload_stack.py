@@ -40,20 +40,6 @@ class WorkloadStack(Stack):
                 "Name": "demo_pvt_snt_1b"
             }
         )
-
-        demo_tgw_att = TransitGatewayAttachmentConstruct(
-            self,
-            "demo_tgw_att",
-            transit_gateway_id= "tgw-0171b3ba72a3c02db",
-            vpc_id = demo_vpc.vpc.ref, 
-            subnet_ids= [
-                demo_pvt_snt_1a.subnet.ref,
-                demo_pvt_snt_1b.subnet.ref
-            ],
-            tags = {
-                "Name": "demo_tgw_att"
-            } 
-        )
         
         demo_s3 = S3BucketConstruct(
             self,
