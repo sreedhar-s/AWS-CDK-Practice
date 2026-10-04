@@ -103,8 +103,10 @@ class WorkloadStack(Stack):
             self,
             "PostgresRDS",
             db_name="demodb",
+            engine="postgres",
+            engine_version="18.4",
             master_username="postgres",
-            master_password="test@123",
+            
             db_identifier="demo-postgres",
             subnet_ids=[
                 demo_pvt_snt_1a.subnet.ref,

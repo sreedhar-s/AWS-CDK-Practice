@@ -18,6 +18,8 @@ class PostgresRDSConstruct(Construct):
         master_username: str,
         master_password: str,
         db_identifier: str,
+        engine_version: str,
+        engine: str,
 
         # Networking
         subnet_ids: list[str],
@@ -69,8 +71,8 @@ class PostgresRDSConstruct(Construct):
             self,
             "PostgresRDS",
             db_instance_identifier=db_identifier,
-            engine="postgres",
-            engine_version="18.6-R1",
+            engine=engine,
+            engine_version=engine_version,
             # RDS Extended Support
             engine_lifecycle_support=(
                 "open-source-rds-extended-support"
@@ -80,7 +82,7 @@ class PostgresRDSConstruct(Construct):
             allocated_storage="50",
             db_name=db_name,
             master_username=master_username,
-            master_user_password=master_password,
+            manage_master_user_password=True,
             enable_iam_database_authentication=False,
             multi_az=False,
             db_subnet_group_name=self.subnet_group.ref,
@@ -94,6 +96,7 @@ class PostgresRDSConstruct(Construct):
             backup_retention_period=30,
             deletion_protection=True,
             copy_tags_to_snapshot=True,
+            storage_encrypted=True,
             tags=[
                 CfnTag(
                     key=key,
@@ -103,6 +106,6 @@ class PostgresRDSConstruct(Construct):
             ],
         )
         
-        self.database.add_dependency(
+        self.database.add_resource_dependency(
             self.subnet_group
         )
