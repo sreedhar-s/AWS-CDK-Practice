@@ -44,5 +44,5 @@ class S3BucketConstruct(Construct):
 
             # Removal behavior
             removal_policy=RemovalPolicy.RETAIN,
-            tags= tags
+            tags= s3_tags
         )
