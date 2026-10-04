@@ -58,9 +58,9 @@ class WorkloadStack(Stack):
         demo_s3 = S3BucketConstruct(
             self,
             "demo_s3",
-            bucket_name="demo-s3-bucket",
+            bucket_name="demo-s3-bucket1",
             tags = {
-                "Name": "demo_s3"
+                "Name": "demo-s3-bucket1"
             }
         )
         
