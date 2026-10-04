@@ -5,7 +5,7 @@ from aws_constructs.vpc import VpcConstruct
 from aws_constructs.subnet import SubnetConstruct
 from aws_constructs.s3 import S3BucketConstruct
 from aws_constructs.security_group import SecurityGroupConstruct
-from aws_constructs.postgres import PostgresConstruct, PostgresRDSConstruct
+from aws_constructs.postgres import PostgresRDSConstruct
 from aws_constructs.iam_role import IamRoleConstruct
 
 class WorkloadStack(Stack):
