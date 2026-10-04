@@ -8,7 +8,7 @@ from aws_cdk import (
 )
 from typing import Optional, Dict
 
-class EKSClusterConstruct(Stack):
+class EKSClusterConstruct(Construct):
     def __init__(
         self,
         scope: Construct,
