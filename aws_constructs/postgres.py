@@ -16,7 +16,6 @@ class PostgresRDSConstruct(Construct):
         # Database
         db_name: str,
         master_username: str,
-        master_password: str,
         db_identifier: str,
         engine_version: str,
         engine: str,
