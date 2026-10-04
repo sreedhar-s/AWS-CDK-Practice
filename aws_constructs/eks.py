@@ -16,14 +16,14 @@ class EKSClusterConstruct(Stack):
         *,
         private_subnet_1: str,
         private_subnet_2: str,
-        cluster_name: str = "ue1dsatseksdv01",
+        cluster_name: str,
         cluster_role_arn: str,
         cluster_security_group_id: str,
         node_security_group_id: str,
-        node_group_name: str = "ue1dsatseksdv01-nodegroup",
+        node_group_name: str,
         node_role_arn:str,
-        kubernetes_version: str = "1.35",
-        node_instance_type: str = "m7i.large",
+        kubernetes_version: str,
+        node_instance_type: str, 
         desired_size: int,
         min_size: int,
         max_size: int,
@@ -143,7 +143,7 @@ class EKSClusterConstruct(Stack):
         # DEPENDENCIES
         # =========================================================
 
-        self.node_group.add_dependency(self.cluster)
+        self.node_group.add_resource_dependency(self.cluster)
 
         # =========================================================
         # EKS ADD-ONS
@@ -188,18 +188,18 @@ class EKSClusterConstruct(Stack):
         )
 
         # Add-on dependencies
-        self.pod_identity_addon.add_dependency(
+        self.pod_identity_addon.add_resource_dependency(
             self.node_group
         )
 
-        self.vpc_cni_addon.add_dependency(
+        self.vpc_cni_addon.add_resource_dependency(
             self.node_group
         )
 
-        self.kube_proxy_addon.add_dependency(
+        self.kube_proxy_addon.add_resource_dependency(
             self.node_group
         )
 
-        self.coredns_addon.add_dependency(
+        self.coredns_addon.add_resource_dependency(
             self.node_group
         )
