@@ -355,7 +355,6 @@ class WorkloadStack(Stack):
             vpc_id=demo_vpc.vpc.ref,
             service_name=f"com.amazonaws.ap-southeast-1.s3",
             vpc_endpoint_type="Gateway",
-            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags = {
                 "Name": "s3-endpoint"
             }
