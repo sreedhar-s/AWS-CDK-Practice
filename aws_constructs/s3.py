@@ -2,7 +2,7 @@ from constructs import Construct
 from aws_cdk import (
     aws_s3 as s3,
     RemovalPolicy,
-    CfnTag
+    Tags
 )
 from typing import Optional, Dict
 
@@ -18,17 +18,6 @@ class S3BucketConstruct(Construct):
         **kwargs,
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        
-        s3_tags = []
-        
-        if tags:
-            s3_tags.extend(
-                CfnTag(
-                    key=key,
-                    value=value,
-                )
-                for key, value in tags.items()
-            )
 
         self.bucket = s3.Bucket(
             self,
@@ -43,6 +32,9 @@ class S3BucketConstruct(Construct):
             versioned=True,
 
             # Removal behavior
-            removal_policy=RemovalPolicy.RETAIN,
-            tags= s3_tags
+            removal_policy=RemovalPolicy.RETAIN
         )
+        
+        if tags:
+            for key, value in tags.items():
+                Tags.of(self.bucket).add(key, value)
