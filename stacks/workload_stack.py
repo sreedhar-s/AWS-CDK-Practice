@@ -92,20 +92,29 @@ class WorkloadStack(Stack):
             self,
             "ClusterIngress80",
             group_id=cluster_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=80,
-            to_port=80,
-            cidr_ip="10.0.0.0/8"
+            ingress_rules = [
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 80,
+                    "to_port": 80,
+                    "cidr_ip": "10.0.0.0/8"
+                },
+                
+            ]
         )
         
         ClusterIngress443 = SecurityGroupIngressConstruct(
             self,
             "ClusterIngress443",
             group_id=cluster_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            cidr_ip="10.0.0.0/8"
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "cidr_ip": "10.0.0.0/8"
+                }
+            ]
         )
         
         # =========================================================
@@ -116,20 +125,28 @@ class WorkloadStack(Stack):
             self,
             "NodeIngress80",
             group_id=node_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=80,
-            to_port=80,
-            cidr_ip="10.0.0.0/8"
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 80,
+                    "to_port": 80,
+                    "cidr_ip": "10.0.0.0/8"
+                }
+            ]
         )
         
         NodeIngress443 = SecurityGroupIngressConstruct(
             self,
             "NodeIngress443",
             group_id=node_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            cidr_ip="10.0.0.0/8"
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "cidr_ip": "10.0.0.0/8"
+                }
+            ]
         )
         
         # =========================================================
@@ -140,8 +157,12 @@ class WorkloadStack(Stack):
             self,
             "NodeSelfIngress",
             group_id=node_sg.security_group.ref,
-            ip_protocol="-1",
-            source_security_group_id=node_sg.security_group.ref
+            ingress_rules=[
+                {
+                    "ip_protocol": "-1",
+                    "source_security_group_id": node_sg.security_group.ref
+                }
+            ]
         )
         
         # =========================================================
@@ -152,10 +173,14 @@ class WorkloadStack(Stack):
             self,
             "ClusterIngressFromNodes",
             group_id=cluster_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            source_security_group_id=node_sg.security_group.ref,
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "source_security_group_id": node_sg.security_group.ref
+                }
+            ]
         )
         
         # =========================================================
@@ -176,10 +201,14 @@ class WorkloadStack(Stack):
             self,
             "NodeIngress443FromCluster",
             group_id=node_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            source_security_group_id=cluster_sg.security_group.ref,
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "source_security_group_id": cluster_sg.security_group.ref
+                }
+            ]
         )
         
         # =========================================================
@@ -190,10 +219,14 @@ class WorkloadStack(Stack):
             self,
             "VpcEndpointIngressFromNodes",
             group_id=self.vpc_endpoint_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            source_security_group_id=self.node_sg.security_group.ref,
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "source_security_group_id": node_sg.security_group.ref
+                }
+            ]
         )
         
         # =========================================================
@@ -204,10 +237,14 @@ class WorkloadStack(Stack):
             self,
             "VpcEndpointIngressFromCluster",
             group_id=self.vpc_endpoint_sg.security_group.ref,
-            ip_protocol="tcp",
-            from_port=443,
-            to_port=443,
-            source_security_group_id=self.cluster_sg.security_group.ref,
+            ingress_rules=[
+                {
+                    "ip_protocol": "tcp",
+                    "from_port": 443,
+                    "to_port": 443,
+                    "source_security_group_id": cluster_sg.security_group.ref
+                }
+            ]
         )
         
         # =========================================================
@@ -499,13 +536,6 @@ class WorkloadStack(Stack):
                 "Name": "demo-cluster"
             }
         )
-        
-
-        
-        
-        
-    
-        
         
         
         

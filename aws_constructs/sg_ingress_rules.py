@@ -7,6 +7,7 @@ class SecurityGroupIngressConstruct(Construct):
             self,
             scope: Construct,
             construct_id: str,
+            group_id: str,
             ingress_rules: Optional[List[Dict]] = None,
             **kwargs,
         ) -> None:
@@ -17,8 +18,8 @@ class SecurityGroupIngressConstruct(Construct):
                 ec2.CfnSecurityGroupIngress(
                     self,
                     f"IngressRule{index}",
-                    group_id=self.security_group.attr_group_id,
-                    ip_protocol=rule.get("protocol", "tcp"),
+                    group_id=group_id,
+                    ip_protocol=rule.get("ip_protocol", "tcp"),
                     from_port=rule.get("from_port"),
                     to_port=rule.get("to_port"),
                     cidr_ip=rule.get("cidr_ip"),
