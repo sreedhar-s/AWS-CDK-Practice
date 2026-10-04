@@ -264,7 +264,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.ecr.api",
             vpc_endpoint_type="Interface",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -286,7 +286,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.ecr.dkr",
             vpc_endpoint_type="Interface",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -308,7 +308,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.sts",
             vpc_endpoint_type="Interface",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -330,7 +330,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.eks",
             vpc_endpoint_type="Interface",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -352,7 +352,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.eks-auth",
             vpc_endpoint_type="Interface",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -374,7 +374,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.s3",
             vpc_endpoint_type="Gateway",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -396,7 +396,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.secretsmanager",
             vpc_endpoint_type="Gateway",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -418,7 +418,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.ec2",
             vpc_endpoint_type="Gateway",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -440,7 +440,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.ssm",
             vpc_endpoint_type="Gateway",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
@@ -462,7 +462,7 @@ class WorkloadStack(Stack):
             service_name=f"com.amazonaws.us-east-1.ssmmessages",
             vpc_endpoint_type="Gateway",
             
-            security_group_ids=vpcendpoint_sg.security_group.ref,
+            endpoint_security_group_id=vpcendpoint_sg.security_group.ref,
             tags=[
                 {
                     "key": "Name",
