@@ -1,7 +1,5 @@
 from constructs import Construct
 from aws_cdk import (
-    Stack,
-    Aws,
     aws_ec2 as ec2,
     aws_eks as eks,
     CfnTag

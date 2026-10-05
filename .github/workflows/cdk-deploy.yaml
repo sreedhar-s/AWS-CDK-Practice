@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       stack:
-        description: "Which stack to deploy"
+        description: "Which stack(s) to deploy (space-separated)"
         required: true
       account_id:
         description: "AWS account ID to deploy"
-        # required: true
+        required: true
 
 permissions:
   id-token: write 
@@ -48,9 +48,43 @@ jobs:
           audience: sts.amazonaws.com
 
       - name: CDK synth
-        run: uv run cdk synth ${{ inputs.stack}}
+        env:
+          STACKS: ${{ inputs.stack }}
+        run: uv run cdk synth $STACKS
+
+      - name: CDK diff (shown in run summary for the approver)
+        env:
+          STACKS: ${{ inputs.stack }}
+        run: |
+          {
+            echo '## CDK diff'
+            echo '```'
+            uv run cdk diff $STACKS 2>&1 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
       
       - name: CDK deploy
         run: uv run cdk deploy ${{ inputs.stack}} --require-approval never
 
+  cdk-plan:
+    name: cdk deploy
+    needs: cdk-plan
+    runs-on: ubuntu-latest
+    environment: approval
+
+    steps:
+      - name: Install AWS CDK CLI
+        run: npm install -g aws-cdk
  
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::${{ inputs.account_id }}:role/gha-role
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-deploy
+          audience: sts.amazonaws.com
+ 
+      - name: CDK deploy
+        env:
+          STACKS: ${{ inputs.stack }}
+        run: cdk deploy --app cdk.out $STACKS --require-approval never
