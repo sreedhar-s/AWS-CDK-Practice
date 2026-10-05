@@ -1,4 +1,4 @@
-name: Deploy AWS CDK
+name: CDK Deploy
 
 on:
   workflow_dispatch:
