@@ -62,6 +62,13 @@ jobs:
             uv run cdk diff $STACKS 2>&1 || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+      
+      - name: Upload cloud assembly
+        uses: actions/upload-artifact@v4
+        with:
+          name: cdk-out
+          path: cdk.out
+          retention-days: 1
 
   cdk-deploy:
     name: cdk deploy
@@ -72,6 +79,12 @@ jobs:
     steps:
       - name: Install AWS CDK CLI
         run: npm install -g aws-cdk
+
+      - name: Download cloud assembly
+        uses: actions/download-artifact@v4
+        with:
+          name: cdk-out
+          path: cdk.out
  
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
