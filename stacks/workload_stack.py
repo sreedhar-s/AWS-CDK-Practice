@@ -44,18 +44,18 @@ class WorkloadStack(Stack):
             }
         )
         
-        # cluster_sg = SecurityGroupConstruct(
-        #     self,
-        #     "ClusterSecurityGroup",
-        #     vpc_id=demo_vpc.vpc.ref,
-        #     group_name="cluster-sg",
-        #     description=(
-        #         "Security group for EKS Cluster"
-        #     ),
-        #     tags={
-        #         "Name": "cluster-sg"
-        #     }
-        # )
+        cluster_sg = SecurityGroupConstruct(
+            self,
+            "ClusterSecurityGroup",
+            vpc_id=demo_vpc.vpc.ref,
+            group_name="cluster-sg",
+            description=(
+                "Security group for EKS Cluster"
+            ),
+            tags={
+                "Name": "cluster-sg"
+            }
+        )
         
         # node_sg = SecurityGroupConstruct(
         #     self,
